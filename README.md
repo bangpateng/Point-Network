@@ -201,7 +201,7 @@ Setelah node sepenuhnya disinkronkan, dan Anda memiliki beberapa XPOINT untuk di
 evmosd status 2>&1 | jq .SyncInfo
 ```
 
-### Check Saldo
+### Check Saldo 
 
 ```
 evmosd query bank balances $EVMOS_WALLET_ADDRESS
