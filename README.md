@@ -117,7 +117,7 @@ sudo systemctl restart evmosd && sudo journalctl -u evmosd -f -o cat
 
 ## Buat dompet
 
-Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
+Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini Masukan Pharse Metamask Kalian dan Jangan lupa simpan mnemonicnya Validator
 
 ```
 evmosd keys add $WALLET
