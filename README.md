@@ -216,3 +216,13 @@ evmosd tx staking create-validator \
   --moniker $NODENAME \
   --chain-id $POINT_CHAIN_ID
 ```
+## Delete Node (Permanent)
+
+```
+sudo systemctl stop evmosd
+sudo systemctl disable evmosd
+sudo rm /etc/systemd/system/evmos* -rf
+sudo rm $(which evmosd) -rf
+sudo rm $HOME/.evmosd -rf
+```
+sudo rm $HOME/point-chain -rf
