@@ -211,7 +211,7 @@ evmosd tx staking create-validator \
   --commission-max-rate "0.2" \
   --commission-rate "0.07" \
   --min-self-delegation "1000000000000000000000" \
-  --pubkey  $(teritorid tendermint show-validator) \
+  --pubkey  $(evmosd tendermint show-validator) \
   --moniker $NODENAME \
   --chain-id $POINT_CHAIN_ID
 ```
