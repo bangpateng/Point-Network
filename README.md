@@ -156,3 +156,47 @@ RPC URL: https://xnet-triton-1.point.space/
 Chain ID: 10721
 SYMBOL: XPOINT
 ```
+
+### Tambahkan dompet dengan 1024 XPOINT Anda
+
+Ingat dompet yang Anda kirimkan kepada kami untuk didanai? Dalam bentuk? Sekarang memiliki 1024 XPOINT.
+
+Impor dompet dengan kunci pribadi ke dompet Anda (misalnya Metamask), dan Anda akan melihat 1024 XPOINT di sana. Tapi ini dompet dana Anda, bukan dompet validator.
+
+### Cari tahu alamat mana yang menjadi dompet validator Anda
+
+Evmos memiliki dua format dompet: format Cosmos, dan format Ethereum. Format Cosmos dimulai dengan `evmos` awalan, dan format Ethereum dimulai dengan 0x. Kebanyakan orang tidak perlu tahu tentang format Cosmos, tetapi validator harus memiliki cara untuk mengubah dari satu ke yang lain.
+
+Jalankan `evmosd keys list`, dan Anda akan melihat daftar kunci yang dilampirkan ke node Anda. Lihat yang memiliki name `Validator kalian`, dan catat alamatnya (harus dalam format Cosmos dan dimulai dengan evmosawalan).
+
+(Dalam kebanyakan kasus itu tidak diperlukan, tetapi jika terjadi kesalahan dan jika Anda ingin mengimpor dompet validator Anda di Metamask Anda, Anda memerlukan kunci pribadi. Anda bisa mendapatkannya dengan perintah ini: evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file)
+
+Gunakan alat ini untuk mengonversinya ke format Ethereum: https://evmos.me/utils/tools
+
+Ini adalah alamat validator Anda dalam format Ethereum.
+
+### Mendanai validator
+
+Terakhir, gunakan dompet untuk mengirim sebanyak yang Anda butuhkan dari alamat dana Anda ke alamat validator (Anda dapat mengirim semua 1024 atau memilih strategi yang berbeda).
+
+### Taruhan XPOINT dan Bergabunglah sebagai Validator
+
+Sekarang Anda harus menunggu simpul untuk disinkronkan sepenuhnya, karena jika tidak, ia tidak akan menemukan Anda.
+
+Setelah node sepenuhnya disinkronkan, dan Anda memiliki beberapa XPOINT untuk dipertaruhkan, periksa saldo Anda di node, Anda akan melihat saldo Anda di Metamask atau Anda dapat memeriksa saldo Anda dengan perintah ini:
+
+`evmosd query bank balances $POINT_WALLET_ADDRESS`
+
+## Buat Validator (Pastikan Status False Dan Saldo Udah Ada)
+
+### Check Status (Jika Sudah False dan Token Sudah Landing baru Buat Validator)
+
+```
+evmosd status 2>&1 | jq .SyncInfo
+```
+
+### Check Saldo
+
+```
+evmosd query bank balances $POINT_WALLET_ADDRESS
+```
