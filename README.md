@@ -139,7 +139,13 @@ evmosd keys list
 
 ```
 POINT_WALLET_ADDRESS=$(evmosd keys show $WALLET -a)
+```
+Masukan Pharse Wallet
+```
 POINT_VALOPER_ADDRESS=$(evmosd keys show $WALLET --bech val -a)
+```
+Masukan Pharse Wallet
+```
 echo 'export POINT_WALLET_ADDRESS='${POINT_WALLET_ADDRESS} >> $HOME/.bash_profile
 echo 'export POINT_VALOPER_ADDRESS='${POINT_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
