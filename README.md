@@ -200,3 +200,18 @@ evmosd status 2>&1 | jq .SyncInfo
 ```
 evmosd query bank balances $POINT_WALLET_ADDRESS
 ```
+
+## Create Validator Nya
+
+```
+evmosd tx staking create-validator \
+  --amount 1000000000000000000000apoint \
+  --from $WALLET \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \
+  --commission-rate "0.07" \
+  --min-self-delegation "1000000000000000000000" \
+  --pubkey  $(teritorid tendermint show-validator) \
+  --moniker $NODENAME \
+  --chain-id $POINT_CHAIN_ID
+```
