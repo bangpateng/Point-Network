@@ -114,3 +114,45 @@ sudo systemctl daemon-reload
 sudo systemctl enable evmosd
 sudo systemctl restart evmosd && sudo journalctl -u evmosd -f -o cat
 ```
+
+## Buat dompet
+
+Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
+
+```
+evmosd keys add $WALLET
+```
+
+(OPSIONAL) Untuk memulihkan dompet Anda menggunakan frase seed
+
+```
+evmosd keys add $WALLET --recover
+```
+
+Untuk mendapatkan daftar dompet saat ini
+
+```
+evmosd keys list
+```
+
+## Save Info Wallet
+
+```
+POINT_WALLET_ADDRESS=$(evmosd keys show $WALLET -a)
+POINT_VALOPER_ADDRESS=$(evmosd keys show $WALLET --bech val -a)
+echo 'export POINT_WALLET_ADDRESS='${POINT_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export POINT_VALOPER_ADDRESS='${POINT_VALOPER_ADDRESS} >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
+
+## Minta Faucet Menggunakan Address Metamask (Kalo Udah Sekip)
+
+- Isi Form : https://pointnetwork.io/testnet-form (Tunggu 24 Jam Akan Dapat Email dan Coin Test Masuk ke Metamask)
+- Add RPC di Metamask (Untuk Memastikan Udah Ada Faucet Landing)
+
+```
+Network Title: Point XNet Triton
+RPC URL: https://xnet-triton-1.point.space/
+Chain ID: 10721
+SYMBOL: XPOINT
+```
