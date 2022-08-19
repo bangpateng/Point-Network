@@ -20,7 +20,7 @@ echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
 if [ ! $WALLET ]; then
 	echo "export WALLET=wallet" >> $HOME/.bash_profile
 fi
-echo "export POINT_CHAIN_ID=point_10721-1" >> $HOME/.bash_profile
+echo "export EVMOS_CHAIN_ID=point_10721-1" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
@@ -63,14 +63,14 @@ make install
 ## Install Node
 
 ```
-evmosd config chain-id $POINT_CHAIN_ID
+evmosd config chain-id $EVMOS_CHAIN_ID
 evmosd config keyring-backend file
 ```
 
 ## Init App
 
 ```
-evmosd init $NODENAME --chain-id $POINT_CHAIN_ID
+evmosd init $NODENAME --chain-id $EVMOS_CHAIN_ID
 ```
 
 ## Download genesis and addrbook
@@ -81,7 +81,7 @@ wget https://raw.githubusercontent.com/pointnetwork/point-chain-config/main/test
 mv config.toml genesis.json ~/.evmosd/config/
 ```
 
-Validasi:
+### Validasi:
 
 ```
 evmosd validate-genesis
@@ -138,16 +138,16 @@ evmosd keys list
 ## Save Info Wallet
 
 ```
-POINT_WALLET_ADDRESS=$(evmosd keys show $WALLET -a)
+EVMOS_WALLET_ADDRESS=$(evmosd keys show $WALLET -a)
 ```
 Masukan Pharse Wallet
 ```
-POINT_VALOPER_ADDRESS=$(evmosd keys show $WALLET --bech val -a)
+EVMOS_VALOPER_ADDRESS=$(evmosd keys show $WALLET --bech val -a)
 ```
 Masukan Pharse Wallet
 ```
-echo 'export POINT_WALLET_ADDRESS='${POINT_WALLET_ADDRESS} >> $HOME/.bash_profile
-echo 'export POINT_VALOPER_ADDRESS='${POINT_VALOPER_ADDRESS} >> $HOME/.bash_profile
+echo 'export EVMOS_WALLET_ADDRESS='${EVMOS_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export EVMOS_VALOPER_ADDRESS='${EVMOS_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
@@ -220,7 +220,7 @@ evmosd tx staking create-validator \
   --min-self-delegation "1000000000000000000000" \
   --pubkey $(evmosd tendermint show-validator) \
   --moniker $NODENAME \
-  --chain-id $POINT_CHAIN_ID
+  --chain-id $EVMOS_CHAIN_ID
 ```
 ## Delete Node (Permanent) 
 
