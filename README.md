@@ -200,6 +200,7 @@ evmosd status 2>&1 | jq .SyncInfo
 ```
 evmosd query bank balances $POINT_WALLET_ADDRESS
 ```
+Jika Command di atas Error `$POINT_WALLET_ADDRESS` menjadi `Address Kalian`
 
 ## Create Validator Nya
 
