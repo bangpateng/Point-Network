@@ -9,33 +9,34 @@
 
 # #Point Network Testnet Incentivized
 
-## Minta Faucet Menggunakan Address Metamask (Kalo Udah Sekip)
-
-- Isi Form : https://pointnetwork.io/testnet-form (Tunggu 24 Jam Akan Dapat Email dan Coin Test Masuk ke Metamask)
-- Add RPC di Metamask (Untuk Memastikan Udah Ada Faucet Landing)
-
+## Setting up vars
 ```
-Network Title: Point XNet Triton
-RPC URL: https://xnet-triton-1.point.space/
-Chain ID: 10721
-SYMBOL: XPOINT
+NODENAME=Bang_Pateng
 ```
-
-# #Instalisasi Bahan-Bahan Node
-
-## Update
+Bang_Pateng Ganti Dengan nama Validator kalian
 
 ```
-sudo apt-get update
-sudo apt-get install build-essential
-```
-```
-sudo apt install make
-sudo apt install git
-sudo apt install screen
+echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
+if [ ! $WALLET ]; then
+	echo "export WALLET=wallet" >> $HOME/.bash_profile
+fi
+echo "export POINT_CHAIN_ID=point_10721-1" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 
-## Instal Go
+## Update packages
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+## Install dependencies
+
+```
+sudo apt install curl build-essential git wget jq make gcc tmux -y
+```
+
+## Install Go
 
 ```
 if ! [ -x "$(command -v go)" ]; then
@@ -50,49 +51,66 @@ if ! [ -x "$(command -v go)" ]; then
 fi
 ```
 
-Check Go Version : `go version`
-
-## Clone Repository
+## Download and build binaries
 
 ```
-git clone https://github.com/pointnetwork/point-chain
-```
-
-## Open Folder
-
-```
-cd point-chain
+cd $HOME
+git clone https://github.com/pointnetwork/point-chain && cd point-chain
 git checkout xnet-triton
 make install
 ```
 
-# #Install Node
-```
-evmosd config keyring-backend file
-evmosd config chain-id point_10721-1
-```
-```
-evmosd keys add <Nama_Wallet> --keyring-backend file
-```
-Nama Wallet : anti Dengan Nama Wallet Kalian Tanpa (<>)
-(Jangan Lupa Backup Address dan Pharse Nya)
-```
-evmosd init [Nama_Validator] --chain-id point_10721-1
-```
-Noted : Tetep pake ([]] Contoh = `evmosd init [BangPateng] --chain-id point_10721-1
+## Install Node
 
-## Instal Genesis dan Config
+```
+evmosd config chain-id $POINT_CHAIN_ID
+evmosd config keyring-backend file
+```
+
+## Init App
+
+```
+evmosd init $NODENAME --chain-id $POINT_CHAIN_ID
+```
+
+## Download genesis and addrbook
+
 ```
 wget https://raw.githubusercontent.com/pointnetwork/point-chain-config/main/testnet-xNet-Triton-1/config.toml
 wget https://raw.githubusercontent.com/pointnetwork/point-chain-config/main/testnet-xNet-Triton-1/genesis.json
 mv config.toml genesis.json ~/.evmosd/config/
 ```
-## Running Node
-```
-screen -R evmos
-```
-```
-evmosd start --json-rpc.enable=true --json-rpc.api "eth,txpool,personal,net,debug,web3"
-```
-CTRL A D (Agar Jalan di Background) Lalu Close Aja Buka Tab Baru
 
+Validasi:
+
+```
+evmosd validate-genesis
+```
+
+## Create Service
+
+```
+sudo tee /etc/systemd/system/evmosd.service > /dev/null <<EOF
+[Unit]
+Description=evmos
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which evmosd) start --home $HOME/.evmosd
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+## Register and start service
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable evmosd
+sudo systemctl restart evmosd && sudo journalctl -u evmosd -f -o cat
+```
