@@ -191,7 +191,7 @@ Sekarang Anda harus menunggu simpul untuk disinkronkan sepenuhnya, karena jika t
 
 Setelah node sepenuhnya disinkronkan, dan Anda memiliki beberapa XPOINT untuk dipertaruhkan, periksa saldo Anda di node, Anda akan melihat saldo Anda di Metamask atau Anda dapat memeriksa saldo Anda dengan perintah ini:
 
-`evmosd query bank balances $POINT_WALLET_ADDRESS`
+`evmosd query bank balances $EVMOS_WALLET_ADDRESS`
 
 ## Buat Validator (Pastikan Status False Dan Saldo Udah Ada)
 
@@ -204,9 +204,9 @@ evmosd status 2>&1 | jq .SyncInfo
 ### Check Saldo
 
 ```
-evmosd query bank balances $POINT_WALLET_ADDRESS
+evmosd query bank balances $EVMOS_WALLET_ADDRESS
 ```
-Jika Command di atas Error `$POINT_WALLET_ADDRESS` menjadi `Address Kalian`
+Jika Command di atas Error `$EVMOS_WALLET_ADDRESS` menjadi `Address Kalian`
 
 ## Create Validator Nya
 
@@ -222,7 +222,7 @@ evmosd tx staking create-validator \
   --moniker $NODENAME \
   --chain-id $EVMOS_CHAIN_ID
 ```
-## Delete Node (Permanent) 
+## Delete Node (Permanent)
 
 ```
 sudo systemctl stop evmosd
