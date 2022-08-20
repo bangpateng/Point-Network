@@ -228,7 +228,7 @@ evmosd tx staking create-validator \
 --keyring-backend file
 ```
 
-**Penting :** Jika Output Yang keluar `code:32` atau `code:19` Artinya Error, kalian Bisa Restart Node Dengan Perintah di Step `Register and start service` Scrool Ke Atas dan Pastikan Yang Sah `code:0`
+**Penting :** Jika Output Yang keluar `code:32` atau `code:19` Artinya Error, kalian Bisa Restart Node Dengan Perintah `sudo systemctl restart evmosd && sudo journalctl -u evmosd -f -o cat` Ulangi ULang Buat Validato, Jika tx Sudah `code:0` Next Step
 
 Salin Txhash Nya Lalu Jalankan
 ```
