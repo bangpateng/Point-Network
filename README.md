@@ -225,6 +225,14 @@ evmosd tx staking create-validator \
   --chain-id $EVMOS_CHAIN_ID
 ```
 
+**Penting :** Jika Output Yang keluar `code:32` atau `code:19` Artinya Error, kalian Bisa Restart Node Dengan Perintah di Step `Register and start service` Scrool Ke Atas dan Pastikan Yang Sah `code:0`
+
+Salin Txhash Nya Lalu Jalankan
+```
+evmosd query tx PASTE-TX-HASH-DI-SINI
+```
+Anda Akan Melihat Output Transaksi Anda Berhasil
+
 ## Edit Validator
 
 ```
