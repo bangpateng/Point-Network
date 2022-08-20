@@ -7,6 +7,14 @@
   <img height="150" height="auto" src="https://user-images.githubusercontent.com/38981255/185550018-bf5220fa-7858-4353-905c-9bbd5b256c30.jpg">
 </p>
 
+## Specification VPS
+
+CPU : 4 or more physical CPU cores
+RAM : 32 GB
+Storage : 500GB SSD
+Connection : 100 Mbps
+OS : Ubuntu 18.04 +
+
 # #Point Network Testnet Incentivized
 
 ## Setting up vars
@@ -163,35 +171,29 @@ Chain ID: 10721
 SYMBOL: XPOINT
 ```
 
-### Tambahkan dompet dengan 1024 XPOINT Anda
+## Cara Convert Token
 
-Ingat dompet yang Anda kirimkan kepada kami untuk didanai? Dalam bentuk? Sekarang memiliki 1024 XPOINT.
+Note : Jika Saldo faucet Yang kalian Punya Berbeda Address atau Ada di Wallet Metamask Yang Berbeda.
+Intinya, Untuk Kalian Yang Claim Token Faucet Pakai Wallet Pertama Metamask dan Wallet Validator itu Berbeda..
 
-Impor dompet dengan kunci pribadi ke dompet Anda (misalnya Metamask), dan Anda akan melihat 1024 XPOINT di sana. Tapi ini dompet dana Anda, bukan dompet validator.
+## Export Private Key Validator kalian Dengan Perintah
 
-### Cari tahu alamat mana yang menjadi dompet validator Anda
+```
+evmosd keys unsafe-export-eth-key $WALLET --keyring-backend file
+```
 
-Evmos memiliki dua format dompet: format Cosmos, dan format Ethereum. Format Cosmos dimulai dengan `evmos` awalan, dan format Ethereum dimulai dengan 0x. Kebanyakan orang tidak perlu tahu tentang format Cosmos, tetapi validator harus memiliki cara untuk mengubah dari satu ke yang lain.
+- Masukan Pharse atau Password Keyring (Sesuai Yang kalian Bikin Saat Buat Wallet)
+- Salin Private Key nya
+- Import ke Metamask
+- Pindahkan dan Kirim Token XPOINT Yang ada di Address Pertama ke Address `0x..` Yang Baru kalian Import Tadi
 
-Jalankan `evmosd keys list`, dan Anda akan melihat daftar kunci yang dilampirkan ke node Anda. Lihat yang memiliki name `Validator kalian`, dan catat alamatnya (harus dalam format Cosmos dan dimulai dengan evmosawalan).
+## Convert XPOINT
 
-(Dalam kebanyakan kasus itu tidak diperlukan, tetapi jika terjadi kesalahan dan jika Anda ingin mengimpor dompet validator Anda di Metamask Anda, Anda memerlukan kunci pribadi. Anda bisa mendapatkannya dengan perintah ini: evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file)
-
-Gunakan alat ini untuk mengonversinya ke format Ethereum: https://evmos.me/utils/tools
-
-Ini adalah alamat validator Anda dalam format Ethereum.
-
-### Mendanai validator
-
-Terakhir, gunakan dompet untuk mengirim sebanyak yang Anda butuhkan dari alamat dana Anda ke alamat validator (Anda dapat mengirim semua 1024 atau memilih strategi yang berbeda).
-
-### Taruhan XPOINT dan Bergabunglah sebagai Validator
-
-Sekarang Anda harus menunggu simpul untuk disinkronkan sepenuhnya, karena jika tidak, ia tidak akan menemukan Anda.
-
-Setelah node sepenuhnya disinkronkan, dan Anda memiliki beberapa XPOINT untuk dipertaruhkan, periksa saldo Anda di node, Anda akan melihat saldo Anda di Metamask atau Anda dapat memeriksa saldo Anda dengan perintah ini:
-
-`evmosd query bank balances $EVMOS_WALLET_ADDRESS`
+- Buka Situs : https://evmos.me/utils/tools
+- Connect Wallet
+- Masukan Address `0x..` Metamaskan kalian di Addres Conventer anda Akan Melihat Address `Evmosxxxx` dan Pastikan Sama Dengan Address Wallet Validator Kalian
+- Silahkan Check Ke Vps kalian dengan Perintah `evmosd query bank balances address-evmos-kalian`
+- Maka Tara Saldo Anda Sudah Ada
 
 ## Buat Validator (Pastikan Status False Dan Saldo Udah Ada)
 
