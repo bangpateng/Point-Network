@@ -236,6 +236,14 @@ evmosd query tx PASTE-TX-HASH-DI-SINI
 ```
 Anda Akan Melihat Output Transaksi Anda Berhasil
 
+## Set Validator
+```
+evmosd tendermint show-validator
+evmosd query tendermint-validator-set | grep "$(evmosd tendermint show-address)"
+evmosd query slashing signing-info $(evmosd tendermint show-validator)
+```
+Pastikan 3 Perintah di atas Mengeluarkan Ouput/Balasan
+
 ## Edit Validator
 
 ```
