@@ -214,15 +214,18 @@ Jika Command di atas Error `$EVMOS_WALLET_ADDRESS` menjadi `Address Kalian`
 
 ```
 evmosd tx staking create-validator \
-  --amount 10000000000000000000000apoint \
-  --from $WALLET \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.07" \
-  --min-self-delegation "10000000000000000000000" \
-  --pubkey  $(evmosd tendermint show-validator) \
-  --moniker $NODENAME \
-  --chain-id $EVMOS_CHAIN_ID
+--amount=100000000000000000000apoint \
+--pubkey=$(evmosd tendermint show-validator) \
+--moniker="MASUKAN-NAMA-VALIDATOR" \
+--chain-id=point_10721-1 \
+--commission-rate="0.10" \
+--commission-max-rate="0.20" \
+--commission-max-change-rate="0.01" \
+--min-self-delegation="100000000000000000000" \
+--gas="400000" \
+--gas-prices="0.025apoint" \
+--from=MASUKAN-ADDRESS-EVMOS \
+--keyring-backend file
 ```
 
 **Penting :** Jika Output Yang keluar `code:32` atau `code:19` Artinya Error, kalian Bisa Restart Node Dengan Perintah di Step `Register and start service` Scrool Ke Atas dan Pastikan Yang Sah `code:0`
