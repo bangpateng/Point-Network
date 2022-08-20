@@ -214,16 +214,29 @@ Jika Command di atas Error `$EVMOS_WALLET_ADDRESS` menjadi `Address Kalian`
 
 ```
 evmosd tx staking create-validator \
-  --amount 1000000000000000000000apoint \
+  --amount 10000000000000000000000apoint \
   --from $WALLET \
   --commission-max-change-rate "0.01" \
   --commission-max-rate "0.2" \
   --commission-rate "0.07" \
-  --min-self-delegation "1000000000000000000000" \
-  --pubkey $(evmosd tendermint show-validator) \
+  --min-self-delegation "10000000000000000000000" \
+  --pubkey  $(evmosd tendermint show-validator) \
   --moniker $NODENAME \
   --chain-id $EVMOS_CHAIN_ID
 ```
+
+## Edit Validator
+
+```
+teritorid tx staking edit-validator \
+  --moniker=$NODENAME \
+  --identity=<your_keybase_id> \
+  --website="<your_website>" \
+  --details="<your_validator_description>" \
+  --chain-id=$EVMOS_CHAIN_ID \
+  --from=$WALLET
+  ```
+
 ## Delete Node (Permanent)
 
 ```
