@@ -228,7 +228,7 @@ evmosd tx staking create-validator \
 ## Edit Validator
 
 ```
-teritorid tx staking edit-validator \
+evmosd tx staking edit-validator \
   --moniker=$NODENAME \
   --identity=<your_keybase_id> \
   --website="<your_website>" \
