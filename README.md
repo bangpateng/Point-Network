@@ -244,7 +244,7 @@ evmosd query slashing signing-info $(evmosd tendermint show-validator)
 ```
 Pastikan 3 Perintah di atas Mengeluarkan Ouput/Balasan
 
-## Edit Validator
+## Edit Validator (Optional Bisa di Sekip)
 
 ```
 evmosd tx staking edit-validator \
