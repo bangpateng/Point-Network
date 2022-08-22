@@ -100,4 +100,4 @@ sudo systemctl restart evmosd
 
 echo '=============== SETUP FINISHED ==================='
 echo -e 'To check logs: \e[1m\e[32msudo journalctl -u evmosd -f -o cat\e[0m'
-echo -e "To check sync status: \e[1m\e[32mevmosd status 2>&1 | jq .SyncInfo\e[0m"
+echo -e 'To check sync status: \e[1m\e[32mevmosd status 2>&1 | jq .SyncInfo\e[0'
