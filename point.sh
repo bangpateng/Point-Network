@@ -11,11 +11,18 @@ echo  "         |___/                            |___/  ";
 echo -e "\e[0m"
 echo "===================================================================" 
 
+echo -e '\e[36mAuthor :\e[39m' Bang Pateng
+echo -e '\e[36mTelegram Group :\e[39m' @bangpateng_group
+echo -e '\e[36mTelegram Channel :\e[39m' @bangpateng_airdrop
+echo -e '\e[36mYoutube :\e[39m' Bang Pateng
+echo -e '\e[36mWebsite :\e[39m' www.bangpatengnode.site
+echo "======================================="
+
 sleep 2
 
 # set vars
 if [ ! $NODENAME ]; then
-	read -p "Enter node name: " NODENAME
+	read -p "Masukan Nama Validator Kalian: " NODENAME
 	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
 fi
 if [ ! $WALLET ]; then
