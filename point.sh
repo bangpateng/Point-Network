@@ -16,7 +16,6 @@ echo -e '\e[36mTelegram Group :\e[39m' @bangpateng_group
 echo -e '\e[36mTelegram Channel :\e[39m' @bangpateng_airdrop
 echo -e '\e[36mYoutube :\e[39m' Bang Pateng
 echo -e '\e[36mWebsite :\e[39m' www.bangpatengnode.site
-echo "======================================="
 
 sleep 2
 
