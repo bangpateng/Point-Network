@@ -22,6 +22,12 @@ OS : Ubuntu 18.04 +
 wget -qO point.sh https://raw.githubusercontent.com/bangpateng/Point-Network/main/point.sh && chmod +x point.sh && ./point.sh
 ```
 
+## Check Log
+
+```
+sudo journalctl -u evmosd -f -o cat
+```
+
 ## Buat dompet
 
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini Masukan Pharse Metamask Kalian dan Jangan lupa simpan mnemonicnya Validator
