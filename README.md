@@ -161,6 +161,15 @@ evmosd tx staking edit-validator \
   --from=$WALLET
   ```
 
+## Claim Reward Hasil Validator
+
+```
+evmosd tx distribution withdraw-rewards VALOPER_ADDRESS-KALIAN --from=$WALLET --commission --chain-id=$EVMOS_CHAIN_ID
+```
+```
+evmosd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$EVMOS_CHAIN_ID --gas=auto
+```
+
 ## Delete Node (Permanent)
 
 ```
